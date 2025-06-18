@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 const profileImage = require('../../assets/images/myProfile.png');
 
 const HeroSection = styled.section`
-  padding: 160px 0 100px;
+  padding: 120px 0 60px;
   position: relative;
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   
   @media (max-width: 768px) {
-    padding: 140px 0 80px;
+    padding: 100px 0 40px;
   }
 `;
 

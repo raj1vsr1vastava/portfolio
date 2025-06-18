@@ -172,6 +172,7 @@ const Header: React.FC = () => {
         </Logo>
         <NavMenu isOpen={isMenuOpen}>
           <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
+          <li><a href="#career-chart" onClick={() => setIsMenuOpen(false)}>Career Journey</a></li>
           <li><a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a></li>
           <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
           <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>

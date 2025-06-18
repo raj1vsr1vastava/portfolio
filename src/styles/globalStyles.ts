@@ -37,10 +37,10 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
   }
   
   section {
-    padding: 80px 0;
+    padding: 40px 0;
     
     @media (max-width: 768px) {
-      padding: 60px 0;
+      padding: 25px 0;
     }
   }
 

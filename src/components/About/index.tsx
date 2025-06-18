@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 const AboutSection = styled.section`
-  padding: 100px 0;
+  padding: 50px 0;
   background-color: ${({ theme }) => theme.bg.secondary};
 `;
 
@@ -30,7 +30,7 @@ const SectionSubtitle = styled.p`
   font-size: 18px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   color: ${({ theme }) => theme.text.secondary};
   max-width: 700px;
   margin-left: auto;
@@ -38,7 +38,7 @@ const SectionSubtitle = styled.p`
   
   @media (max-width: 768px) {
     font-size: 16px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 `;
 

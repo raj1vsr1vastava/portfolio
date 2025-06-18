@@ -42,4 +42,5 @@ export interface Organization {
   colorClass: string;
   width: string;
   left?: string; // Optional left position property
+  logoUrl?: string; // Company logo URL
 }

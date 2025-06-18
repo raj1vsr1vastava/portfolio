@@ -5,7 +5,7 @@ import { experienceData } from './data';
 import { calculateDuration, formatDate } from '../../utils/dateUtils';
 
 const ExperienceSection = styled.section`
-  padding: 100px 0;
+  padding: 50px 0;
 `;
 
 const Container = styled.div`
@@ -31,7 +31,7 @@ const SectionSubtitle = styled.p`
   font-size: 18px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   color: ${({ theme }) => theme.text.secondary};
   max-width: 700px;
   margin-left: auto;
@@ -39,7 +39,7 @@ const SectionSubtitle = styled.p`
   
   @media (max-width: 768px) {
     font-size: 16px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 `;
 
@@ -67,6 +67,7 @@ const Timeline = styled.div`
 const TimelineItem = styled(motion.div)`
   position: relative;
   margin-bottom: 48px;
+  transition: all 0.3s ease;
   
   &::after {
     content: '';
@@ -76,6 +77,23 @@ const TimelineItem = styled(motion.div)`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  &.highlight-experience {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    
+    .timeline-content {
+      box-shadow: 0 8px 32px ${({ theme }) => theme.accent.primary}40;
+      border: 2px solid ${({ theme }) => theme.accent.primary}60;
+    }
+    
+    .timeline-marker {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 6px ${({ theme }) => theme.bg.primary}, 
+                  0 0 0 8px ${({ theme }) => theme.accent.primary}60,
+                  0 0 20px ${({ theme }) => theme.accent.primary}40;
+    }
   }
 `;
 
@@ -90,6 +108,7 @@ const TimelineMarker = styled.div`
   z-index: 1;
   box-shadow: 0 0 0 4px ${({ theme }) => theme.bg.primary}, 
               0 0 0 6px ${({ theme }) => theme.accent.primary}40;
+  transition: all 0.3s ease;
   
   @media (min-width: 768px) {
     left: 50%;
@@ -132,6 +151,7 @@ const TimelineContent = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 16px ${({ theme }) => theme.shadow.light};
   margin-left: 48px;
+  transition: all 0.3s ease;
   
   @media (min-width: 768px) {
     width: calc(50% - 30px);
@@ -249,19 +269,20 @@ const Experience: React.FC = () => {
             return (
               <TimelineItem 
                 key={item.id}
+                data-experience-id={item.id}
                 variants={fadeInUpItem}
                 initial="hidden"
                 animate={controls}
                 custom={index}
               >
-                <TimelineMarker />
+                <TimelineMarker className="timeline-marker" />
                 
                 {isEven ? (
                   <>
                     <TimelineDate>
                       {dateText} <Duration>({duration})</Duration>
                     </TimelineDate>
-                    <TimelineContent>
+                    <TimelineContent className="timeline-content">
                       <h3>{item.title}</h3>
                       <h4>{item.company}</h4>
                       <p>{item.description}</p>
@@ -277,7 +298,7 @@ const Experience: React.FC = () => {
                     <RightTimelineDate>
                       {dateText} <Duration>({duration})</Duration>
                     </RightTimelineDate>
-                    <RightTimelineContent>
+                    <RightTimelineContent className="timeline-content">
                       <h3>{item.title}</h3>
                       <h4>{item.company}</h4>
                       <p>{item.description}</p>

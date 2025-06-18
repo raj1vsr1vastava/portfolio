@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud, faChartBar, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectsSection = styled.section`
-  padding: 100px 0;
+  padding: 50px 0;
   background-color: ${({ theme }) => theme.bg.secondary};
 `;
 
@@ -21,12 +21,12 @@ const SectionTitle = styled.h2`
   font-size: 42px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
   color: ${({ theme }) => theme.text.primary};
   
   @media (max-width: 768px) {
     font-size: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
   }
 `;
 

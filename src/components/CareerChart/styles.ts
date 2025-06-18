@@ -11,9 +11,9 @@ export interface CareerBarProps {
 }
 
 export const ChartSection = styled.section`
-  padding: 100px 0;
+  padding: 50px 0;
   background-color: ${({ theme }) => theme.bg.secondary};
-  min-height: 900px; /* Further increased to ensure all organizations are visible */
+  min-height: 900px; /* Increased for enhanced timeline */
 `;
 
 export const Container = styled.div`
@@ -39,7 +39,7 @@ export const SectionSubtitle = styled.p`
   font-size: 18px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   color: ${({ theme }) => theme.text.secondary};
   max-width: 700px;
   margin-left: auto;
@@ -47,12 +47,12 @@ export const SectionSubtitle = styled.p`
   
   @media (max-width: 768px) {
     font-size: 16px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 `;
 
 export const ChartDescription = styled.div`
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   
   p {
     font-size: 16px;
@@ -73,43 +73,84 @@ export const ChartContainer = styled.div`
 export const VerticalCareerChart = styled.div`
   position: relative;
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  min-height: 700px; /* Further increased height to show all organizations */
-  padding: 32px 0 64px 0; /* Added padding at the bottom */
+  overflow-x: hidden;
+  min-height: 650px; /* Increased to accommodate enhanced timeline */
+  padding: 32px 0 32px 0;
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 768px) {
+    min-height: auto; /* Auto height for mobile vertical layout */
+    padding: 20px 0;
+  }
 `;
 
-export const TimeAxis = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 32px;
+export const MonthlyTimeAxis = styled.div`
+  position: absolute;
+  bottom: 135px; /* Positioned just below timeline */
+  left: 32px;
+  right: 32px;
   width: calc(100% - 64px);
-  margin-top: 500px; /* Further increased to ensure timeline is below all orgs */
+  height: 20px;
+  display: flex;
+  align-items: flex-end;
+  
+  @media (max-width: 768px) {
+    display: none; /* Hide on mobile - will use vertical layout */
+  }
 `;
 
-export const YearMarker = styled.div`
-  position: relative;
-  font-weight: 500;
+export const MonthMarker = styled.div<{ position: string; isStartMonth?: boolean }>`
+  position: absolute;
+  left: ${props => props.position};
+  font-size: 10px;
   color: ${({ theme }) => theme.text.secondary};
-  margin-top: 16px; /* Changed from margin-bottom to margin-top */
+  font-weight: ${props => props.isStartMonth ? '600' : '400'};
+  transform: translateX(-50%);
+  white-space: nowrap;
   
   &::before {
     content: '';
     position: absolute;
-    top: -8px; /* Changed from bottom to top */
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    height: 6px;
+    height: ${props => props.isStartMonth ? '8px' : '4px'};
     width: 1px;
-    background-color: ${({ theme }) => theme.text.secondary};
+    background-color: ${({ theme, isStartMonth }) => 
+      isStartMonth ? theme.text.primary : theme.text.muted};
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 8px;
+    
+    /* Stagger every other marker to avoid overlap */
+    &:nth-child(even) {
+      top: 15px; /* Move every other marker down */
+    }
+    
+    &:nth-child(odd) {
+      top: 0px; /* Keep odd markers at the top */
+    }
+    
+    &::before {
+      height: ${props => props.isStartMonth ? '6px' : '3px'};
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 7px;
+    
+    /* More aggressive staggering for very small screens */
+    &:nth-child(even) {
+      top: 20px;
+    }
   }
 `;
 
-export const VerticalTimelineLine = styled.div`
+export const HorizontalTimelineLine = styled.div`
   position: absolute;
-  top: 500px; /* Adjusted to match the new time axis position */
+  bottom: 165px; /* 5px gap from career bars */
   left: 32px;
   right: 32px;
   height: 2px;
@@ -118,20 +159,104 @@ export const VerticalTimelineLine = styled.div`
     ${({ theme }) => theme.accent.secondary}
   );
   width: calc(100% - 64px);
+  
+  @media (max-width: 768px) {
+    display: none; /* Hide horizontal timeline on mobile - will use vertical layout */
+  }
+`;
+
+export const VerticalTimelineLine = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    left: 24px; /* Center under the 48px logos (0px + 48px/2 = 24px) */
+    top: 20px;
+    bottom: 70px;
+    width: 2px;
+    background: linear-gradient(180deg, 
+      ${({ theme }) => theme.accent.primary}, 
+      ${({ theme }) => theme.accent.secondary}
+    );
+    z-index: 1;
+  }
+`;
+
+export const MobileCareerContainer = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    margin-left: 60px; /* Space for vertical timeline + larger logos (48px + 12px margin) */
+  }
+`;
+
+export const MobileCareerItem = styled(motion.div)`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    position: relative;
+    /* Removed circle - logo will be on timeline instead */
+  }
+`;
+
+export const MobileCareerCard = styled.div<{ startColor: string; endColor: string }>`
+  background: linear-gradient(135deg, 
+    ${props => props.startColor}, 
+    ${props => props.endColor}
+  );
+  border-radius: 8px;
+  padding: 16px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width:90%; /* Use full width of container for proper border-radius */
+  overflow: hidden; /* Ensure content doesn't break border-radius */
+  box-sizing: border-box; /* Include padding in width calculation */
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px ${({ theme }) => theme.shadow.medium};
+  }
+  
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  
+  p {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  
+  span {
+    font-size: 11px;
+    opacity: 0.8;
+  }
 `;
 
 export const CareerBarsContainer = styled.div`
   position: absolute;
-  top: 20px; /* Adjusted to position above the time axis */
-  padding: 0 12px;
-  display: flex;
-  flex-direction: column;
-  width: calc(100% - 24px); /* Increased width */
-  margin: 0 auto;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: 32px;
+  right: 32px;
+  width: calc(100% - 64px);
   z-index: 2;
-  height: 500px; /* Further increased to ensure all orgs are visible */
+  height: 480px; /* Increased to bring bars closer to timeline */
+  
+  @media (max-width: 768px) {
+    display: none; /* Hide horizontal layout on mobile */
+  }
 `;
 
 export const CareerBar = styled(motion.div)<CareerBarProps>`
@@ -149,11 +274,23 @@ export const CareerBar = styled(motion.div)<CareerBarProps>`
   margin-left: ${props => props.left}; /* Position bar based on start date */
   box-shadow: 0 4px 12px ${({ theme }) => theme.shadow.medium};
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px ${({ theme }) => theme.shadow.medium};
+    filter: brightness(1.05);
+  }
 
   &.animate-in {
     opacity: 1;
     transform: translateY(0);
     transition: all 0.5s ease-out ${props => props.index * 0.2}s;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 
   &.dimmed {
@@ -174,10 +311,9 @@ export const CareerBar = styled(motion.div)<CareerBarProps>`
 
 export const BarConnector = styled.div`
   position: absolute;
-  bottom: -30px; /* Connect from the bottom of the bar */
+  bottom: -10px; /* Connect from the bottom of the bar */
   left: 50%;
   transform: translateX(-50%);
-  height: 30px; /* Variable height will be applied with inline styles */
   width: 2px;
   background-color: ${({ theme }) => theme.text.muted};
   z-index: 1;
@@ -198,12 +334,27 @@ export const OrgLabel = styled.div`
     padding: 8px 12px;
   }
   
+  @media (max-width: 768px) {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
   strong {
     display: block;
     font-weight: 600;
     margin-bottom: 4px;
     white-space: normal; /* Allow wrapping */
     line-height: 1.3;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
   }
   
   span {
@@ -211,5 +362,116 @@ export const OrgLabel = styled.div`
     font-size: 13px;
     white-space: normal; /* Allow wrapping */
     line-height: 1.3;
+    
+    @media (max-width: 992px) {
+      font-size: 11px;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 1.2;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 9px;
+    }
+  }
+`;
+
+export const CompanyLogo = styled.img`
+  display: none; /* Hide logos on desktop/wide screens */
+  
+  /* Only show logos on mobile screens for space efficiency */
+  @media (max-width: 768px) {
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: 4px;
+    filter: brightness(0) invert(1); /* Make logos white */
+    flex-shrink: 0;
+  }
+`;
+
+export const OrgLabelContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
+export const OrgLabelHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2px;
+  }
+`;
+
+export const MobileCompanyLogo = styled.img`
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 12px;
+  border-radius: 6px;
+  background-color: white;
+  padding: 4px;
+  flex-shrink: 0;
+`;
+
+export const MobileCareerContent = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
+
+export const TimelineLogoContainer = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    left: 0px; /* Center on timeline (24px left - 12px = 12px from center for 48px logo) */
+    top: 30px;
+    z-index: 3;
+  }
+`;
+
+export const TimelineLogo = styled.img<{ index: number }>`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: ${props => {
+      // Calculate positioning based on mobile career item layout:
+      // - Each MobileCareerItem: card height + 24px margin-bottom
+      // - Card content estimate:
+      //   - h4 (14px font, 600 weight, 4px margin-bottom, 1.2 line-height): ~17px
+      //   - p (12px font, 8px margin-bottom, 1.2 line-height): ~22px  
+      //   - span (11px font, 1.2 line-height): ~13px
+      //   - Card padding: 16px top + 16px bottom = 32px
+      //   Total card height: ~84px
+      // - Total item height: 84px + 24px margin = 108px
+      // - Logo should align with card center: 16px (top padding) + 26px (half content) = 42px from item start
+      const itemSpacing = 125; // Total height per career item
+      const logoOffset = 35;   // Offset to center logo with card content
+      return props.index * itemSpacing + logoOffset;
+    }}px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: white;
+    padding: 1px;
+    border: 3px solid ${({ theme }) => theme.accent.primary};
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
   }
 `;

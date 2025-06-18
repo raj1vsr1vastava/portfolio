@@ -78,8 +78,8 @@ const App: React.FC = () => {
         <main>
           <Hero />
           <About />
-          <Experience />
           <CareerChart />
+          <Experience />
           <Skills />
           <Projects />
           <Contact />

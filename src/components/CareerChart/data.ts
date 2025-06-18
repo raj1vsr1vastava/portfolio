@@ -9,6 +9,7 @@ export const organizationData: Organization[] = [
     endDate: '2014-06',
     colorClass: 'infosys-bar',
     width: '30%',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg',
   },
   {
     id: 'org-2',
@@ -18,6 +19,7 @@ export const organizationData: Organization[] = [
     endDate: '2018-07',
     colorClass: 'amadeus-bar',
     width: '18%',
+    logoUrl: 'https://1000logos.net/wp-content/uploads/2022/05/Amadeus-Logo.png',
   },
   {
     id: 'org-3',
@@ -27,6 +29,7 @@ export const organizationData: Organization[] = [
     endDate: '2020-10',
     colorClass: 'walmart-bar',
     width: '18%',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg',
   },
   {
     id: 'org-4',
@@ -36,6 +39,7 @@ export const organizationData: Organization[] = [
     endDate: '2022-02',
     colorClass: 'paypal-bar',
     width: '15%',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg',
   },
   {
     id: 'org-5',
@@ -45,5 +49,6 @@ export const organizationData: Organization[] = [
     endDate: null,
     colorClass: 'microsoft-bar',
     width: '22%',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
   },
 ];
