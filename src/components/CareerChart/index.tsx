@@ -143,9 +143,9 @@ const CareerChart: React.FC = () => {
     <ChartSection id="career-chart">
       <Container>
         <SectionTitle>Career Journey</SectionTitle>
-        <SectionSubtitle>
+        {/* <SectionSubtitle>
           Visual representation of my professional growth and skills development over time
-        </SectionSubtitle>
+        </SectionSubtitle> */}
         
         <ChartDescription as={motion.div}
           variants={fadeIn}
@@ -172,7 +172,7 @@ const CareerChart: React.FC = () => {
                 .sort((a, b) => {
                   // Convert dates to comparable values (earlier at bottom, closest to x-axis)
                   return new Date(a.startDate + '-01').getTime() - new Date(b.startDate + '-01').getTime();
-                })                .map((org, index) => {
+                }).map((org, index) => {
                   const colors = getCompanyColor(org.colorClass);
                   // Use a more reliable positioning approach
                   // Total available height is 500px, divide it evenly based on number of orgs with margins                  // Start from the bottom with enough space for the timeline and distribute bars evenly

@@ -83,6 +83,12 @@ const NavActions = styled.div`
   gap: 16px;
 `;
 
+const NavList = styled.ul`
+  display: contents;
+  padding: 0;
+  margin: 0;
+`;
+
 const ThemeToggle = styled.div`
   cursor: pointer;
   padding: 8px;
@@ -160,34 +166,30 @@ const Header: React.FC = () => {
 
   return (
     <StyledHeader scrolled={hasScrolled}>
-      <nav>
-        <NavContainer>
-          <Logo>
-            <h2>Rajiv Srivastava</h2>
-          </Logo>
-            <NavMenu as="ul" isOpen={isMenuOpen}>
-            <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
-            <li><a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a></li>
-            <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
-            <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
-            <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
-          </NavMenu>
-          
-          <NavActions>
-            <ThemeToggle onClick={toggleTheme} role="button" tabIndex={0} aria-label="Toggle dark/light theme">
-              <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
-            </ThemeToggle>
-            
-            <HamburgerButton onClick={toggleMenu}>
-              <Hamburger>
-                <span></span>
-                <span></span>
-                <span></span>
-              </Hamburger>
-            </HamburgerButton>
-          </NavActions>
-        </NavContainer>
-      </nav>
+      <NavContainer>
+        <Logo>
+          <h2>MyPortfolio</h2>
+        </Logo>
+        <NavMenu isOpen={isMenuOpen}>
+          <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
+          <li><a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a></li>
+          <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
+          <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
+          <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+        </NavMenu>
+        <NavActions>
+          <ThemeToggle onClick={toggleTheme} role="button" tabIndex={0} aria-label="Toggle dark/light theme">
+            <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
+          </ThemeToggle>
+          <HamburgerButton onClick={toggleMenu}>
+            <Hamburger>
+              <span></span>
+              <span></span>
+              <span></span>
+            </Hamburger>
+          </HamburgerButton>
+        </NavActions>
+      </NavContainer>
     </StyledHeader>
   );
 };
