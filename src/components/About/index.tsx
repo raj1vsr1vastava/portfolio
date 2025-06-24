@@ -4,7 +4,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 
 const AboutSection = styled.section`
   padding: 50px 0;
-  background-color: ${({ theme }) => theme.bg.secondary};
+  background-color: ${({ theme }) => theme.bg.secondary}; /* Default background */
 `;
 
 const Container = styled.div`

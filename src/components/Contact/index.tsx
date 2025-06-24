@@ -7,6 +7,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const ContactSection = styled.section`
   padding: 50px 0;
+  background-color: ${({ theme }) => theme.bg.alternate}; /* Subtle blue-gray for alternating effect */
 `;
 
 const Container = styled.div`
@@ -266,15 +267,15 @@ const Contact: React.FC = () => {
             <ContactDetails>
               <ContactItem>
                 <FontAwesomeIcon icon={faEnvelope} />
-                <span>rajiv.srivastava@example.com</span>
+                <span>rajiv.srivastava01@gmail.com</span>
               </ContactItem>
               <ContactItem>
                 <FontAwesomeIcon icon={faPhone} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 8105899228</span>
               </ContactItem>
               <ContactItem>
                 <FontAwesomeIcon icon={faLinkedin} />
-                <span>linkedin.com/in/rajivsrivastava</span>
+                <span>linkedin.com/in/rajiv-srivastava</span>
               </ContactItem>
             </ContactDetails>
           </ContactInfo>

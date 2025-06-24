@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { experienceData } from './data';
 import { calculateDuration, formatDate } from '../../utils/dateUtils';
 
+// Core section styling
 const ExperienceSection = styled.section`
-  padding: 50px 0;
+  padding: 40px 0 60px;
+  background-color: ${({ theme }) => theme.bg.secondary}; /* Regular background */
 `;
 
 const Container = styled.div`
@@ -43,201 +45,174 @@ const SectionSubtitle = styled.p`
   }
 `;
 
-const Timeline = styled.div`
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
+
+
+// Grid layout for experience cards - limited to 2 columns
+const ExperienceGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   
-  &::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background-color: ${({ theme }) => theme.accent.primary}40;
-    top: 0;
-    bottom: 0;
-    left: 20px;
-    
-    @media (min-width: 768px) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const TimelineItem = styled(motion.div)`
-  position: relative;
-  margin-bottom: 48px;
-  transition: all 0.3s ease;
+// Card styling for experiences
+const ExperienceCard = styled(motion.div)`
+  background-color: ${({ theme }) => theme.bg.card};
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px ${({ theme }) => theme.shadow.light};
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
   
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-  
-  &:last-child {
-    margin-bottom: 0;
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px ${({ theme }) => theme.shadow.medium};
   }
   
   &.highlight-experience {
-    transform: scale(1.02);
-    filter: brightness(1.1);
-    
-    .timeline-content {
-      box-shadow: 0 8px 32px ${({ theme }) => theme.accent.primary}40;
-      border: 2px solid ${({ theme }) => theme.accent.primary}60;
-    }
-    
-    .timeline-marker {
-      transform: scale(1.3);
-      box-shadow: 0 0 0 6px ${({ theme }) => theme.bg.primary}, 
-                  0 0 0 8px ${({ theme }) => theme.accent.primary}60,
-                  0 0 20px ${({ theme }) => theme.accent.primary}40;
-    }
+    border: 2px solid ${({ theme }) => theme.accent.primary}60;
+    box-shadow: 0 8px 32px ${({ theme }) => theme.accent.primary}40;
   }
 `;
 
-const TimelineMarker = styled.div`
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: ${({ theme }) => theme.accent.primary};
-  border-radius: 50%;
-  left: 14px;
-  top: 8px;
-  z-index: 1;
-  box-shadow: 0 0 0 4px ${({ theme }) => theme.bg.primary}, 
-              0 0 0 6px ${({ theme }) => theme.accent.primary}40;
-  transition: all 0.3s ease;
-  
-  @media (min-width: 768px) {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-`;
-
-const TimelineDate = styled.span`
-  position: relative;
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text.secondary};
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  margin-left: 48px;
-  
-  @media (min-width: 768px) {
-    width: 40%;
-    margin-left: 0;
-    padding-right: 30px;
-    text-align: right;
-    float: left;
-    padding-top: 6px;
-  }
-`;
-
-const Duration = styled.small`
-  display: inline-block;
-  font-weight: normal;
-  margin-left: 8px;
-  color: ${({ theme }) => theme.text.muted};
-  font-size: 12px;
-`;
-
-const TimelineContent = styled.div`
-  position: relative;
-  background-color: ${({ theme }) => theme.bg.card};
+// Header section of the experience card
+const ExperienceHeader = styled.div`
+  height: auto;
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px ${({ theme }) => theme.shadow.light};
-  margin-left: 48px;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, 
+    ${({ theme }) => theme.accent.primary}20, 
+    ${({ theme }) => theme.accent.secondary}20
+  );
+  display: flex;
+  flex-direction: column;
   
-  @media (min-width: 768px) {
-    width: calc(50% - 30px);
-    float: left;
-    margin-left: 0;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 12px;
-      right: -10px;
-      width: 20px;
-      height: 20px;
-      background-color: ${({ theme }) => theme.bg.card};
-      transform: rotate(45deg);
-      box-shadow: 4px -4px 8px ${({ theme }) => theme.shadow.light}20;
-    }
+  .icon-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
   }
+`;
+
+const CompanyLogo = styled.img`
+  height: 42px;
+  width: auto;
+  max-width: 80px;
+  margin-right: 16px;
+  object-fit: contain;
+`;
+
+// Content section of the experience card
+const ExperienceContent = styled.div`
+  padding: 16px 24px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+// Title of the experience
+const ExperienceTitle = styled.h3`
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: ${({ theme }) => theme.text.primary};
+`;
+
+// Company name
+const CompanyName = styled.h4`
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: ${({ theme }) => theme.text.primary};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+// Period of employment
+const ExperiencePeriod = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text.secondary};
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+`;
+
+// Duration calculation display
+const Duration = styled.span`
+  font-size: 13px;
+  font-weight: normal;
+  color: ${({ theme }) => theme.text.muted};
+  margin-left: 4px;
+`;
+
+// Description paragraph
+const ExperienceDescription = styled.p`
+  font-size: 16px;
+  line-height: 1.7;
+  color: ${({ theme }) => theme.text.secondary};
+  margin-bottom: 20px;
+`;
+
+// Achievements list container
+const AchievementsList = styled.ul`
+  padding-left: 18px;
+  margin-top: 16px;
   
-  h3 {
-    font-size: 20px;
-    font-weight: 600;
+  li {
+    font-size: 15px;
+    line-height: 1.5;
     margin-bottom: 8px;
-    color: ${({ theme }) => theme.accent.primary};
-  }
-  
-  h4 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 16px;
-    color: ${({ theme }) => theme.text.primary};
-  }
-  
-  p {
-    font-size: 16px;
-    line-height: 1.6;
     color: ${({ theme }) => theme.text.secondary};
-    margin-bottom: 16px;
-  }
-  
-  ul {
-    padding-left: 18px;
     
-    li {
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 8px;
-      color: ${({ theme }) => theme.text.secondary};
-      
-      &:last-child {
-        margin-bottom: 0;
-      }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 `;
 
-// Alternate layout for timeline items
-const RightTimelineContent = styled(TimelineContent)`
-  @media (min-width: 768px) {
-    float: right;
-    
-    &::before {
-      left: -10px;
-      right: auto;
-      box-shadow: -4px 4px 8px ${({ theme }) => theme.shadow.light}20;
-    }
-  }
-`;
-
-const RightTimelineDate = styled(TimelineDate)`
-  @media (min-width: 768px) {
-    float: right;
-    text-align: left;
-    padding-right: 0;
-    padding-left: 30px;
-  }
-`;
-
-// Animation variants
-const fadeInUpItem = {
+// Animation variants for staggered animation
+const cardVariant = {
   hidden: { opacity: 0, y: 50 },
-  visible: { 
+  visible: (i: number) => ({ 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6 }
-  }
+    transition: { 
+      delay: i * 0.2,
+      duration: 0.6
+    }
+  })
+};
+
+// Mapping between Experience ID and Organization ID
+const experienceToOrgMapping: { [key: string]: string } = {
+  'exp-1': 'org-5', // Microsoft India
+  'exp-2': 'org-4', // PayPal India
+  'exp-3': 'org-3', // Walmart Labs
+  'exp-4': 'org-2', // Amadeus Labs
+  'exp-5': 'org-1', // GE Healthcare 
+  'exp-6': 'org-6', // Juniper Networks
+};
+
+// Mapping between Organization ID and Logo URL
+const orgLogoMapping: { [key: string]: string } = {
+  'org-1': 'https://brandeps.com/logo-download/G/GE-Healthcare-logo-vector-01.svg', // GE Healthcare
+  'org-2': 'https://1000logos.net/wp-content/uploads/2022/05/Amadeus-Logo.png',
+  'org-3': 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg',
+  'org-4': 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg',
+  'org-5': 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+  'org-6': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Juniper_Networks_logo.svg/2560px-Juniper_Networks_logo.svg.png', // Juniper Networks
 };
 
 const Experience: React.FC = () => {
@@ -260,60 +235,50 @@ const Experience: React.FC = () => {
           A journey through leading technology companies and impactful projects
         </SectionSubtitle>
         
-        <Timeline ref={ref}>
-          {experienceData.map((item, index) => {
-            const isEven = index % 2 === 0;
-            const dateText = `${formatDate(item.startDate)} - ${formatDate(item.endDate)}`;
-            const duration = calculateDuration(item.startDate, item.endDate);
+        <ExperienceGrid ref={ref}>
+          {experienceData.map((experience, index) => {
+            const dateText = `${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`;
+            const duration = calculateDuration(experience.startDate, experience.endDate);
             
             return (
-              <TimelineItem 
-                key={item.id}
-                data-experience-id={item.id}
-                variants={fadeInUpItem}
+              <ExperienceCard
+                key={experience.id}
+                data-experience-id={experience.id}
+                custom={index}
+                variants={cardVariant}
                 initial="hidden"
                 animate={controls}
-                custom={index}
+                className={experience.id === window.location.hash.substring(1) ? 'highlight-experience' : ''}
               >
-                <TimelineMarker className="timeline-marker" />
+                <ExperienceHeader>
+                  <div className="icon-container">
+                    <CompanyLogo 
+                      src={orgLogoMapping[experienceToOrgMapping[experience.id]]} 
+                      alt={experience.company}
+                    />
+                    <div>
+                      <ExperienceTitle>{experience.title}</ExperienceTitle>
+                      <CompanyName>{experience.company}</CompanyName>
+                      <ExperiencePeriod>
+                        {dateText} <Duration>({duration})</Duration>
+                      </ExperiencePeriod>
+                    </div>
+                  </div>
+                </ExperienceHeader>
                 
-                {isEven ? (
-                  <>
-                    <TimelineDate>
-                      {dateText} <Duration>({duration})</Duration>
-                    </TimelineDate>
-                    <TimelineContent className="timeline-content">
-                      <h3>{item.title}</h3>
-                      <h4>{item.company}</h4>
-                      <p>{item.description}</p>
-                      <ul>
-                        {item.achievements.map((achievement, i) => (
-                          <li key={`${item.id}-achievement-${i}`}>{achievement}</li>
-                        ))}
-                      </ul>
-                    </TimelineContent>
-                  </>
-                ) : (
-                  <>
-                    <RightTimelineDate>
-                      {dateText} <Duration>({duration})</Duration>
-                    </RightTimelineDate>
-                    <RightTimelineContent className="timeline-content">
-                      <h3>{item.title}</h3>
-                      <h4>{item.company}</h4>
-                      <p>{item.description}</p>
-                      <ul>
-                        {item.achievements.map((achievement, i) => (
-                          <li key={`${item.id}-achievement-${i}`}>{achievement}</li>
-                        ))}
-                      </ul>
-                    </RightTimelineContent>
-                  </>
-                )}
-              </TimelineItem>
+                <ExperienceContent>
+                  <ExperienceDescription>{experience.description}</ExperienceDescription>
+                  
+                  <AchievementsList>
+                    {experience.achievements.map((achievement, i) => (
+                      <li key={`${experience.id}-achievement-${i}`}>{achievement}</li>
+                    ))}
+                  </AchievementsList>
+                </ExperienceContent>
+              </ExperienceCard>
             );
           })}
-        </Timeline>
+        </ExperienceGrid>
       </Container>
     </ExperienceSection>
   );

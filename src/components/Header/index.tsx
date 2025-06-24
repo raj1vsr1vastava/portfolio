@@ -168,7 +168,7 @@ const Header: React.FC = () => {
     <StyledHeader scrolled={hasScrolled}>
       <NavContainer>
         <Logo>
-          <h2>MyPortfolio</h2>
+          <h2>Profile</h2>
         </Logo>
         <NavMenu isOpen={isMenuOpen}>
           <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>

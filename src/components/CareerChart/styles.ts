@@ -11,9 +11,9 @@ export interface CareerBarProps {
 }
 
 export const ChartSection = styled.section`
-  padding: 50px 0;
-  background-color: ${({ theme }) => theme.bg.secondary};
-  min-height: 900px; /* Increased for enhanced timeline */
+  padding: 50px 0 30px;
+  background-color: ${({ theme }) => theme.bg.alternate}; /* Subtle blue-gray for alternating effect */
+  min-height: auto; /* Allow natural height instead of forcing minimum */
 `;
 
 export const Container = styled.div`

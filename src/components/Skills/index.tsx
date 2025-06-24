@@ -16,6 +16,7 @@ import {
 
 const SkillsSection = styled.section`
   padding: 50px 0;
+  background-color: ${({ theme }) => theme.bg.alternate}; /* Subtle blue-gray for alternating effect */
 `;
 
 const Container = styled.div`

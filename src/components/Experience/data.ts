@@ -59,14 +59,24 @@ export const experienceData: ExperienceItem[] = [
   },
   {
     id: 'exp-5',
-    title: 'Software Engineer / Lead',
-    company: 'Infosys | Juniper Networks | GE Healthcare',
-    startDate: '2006-10',
+    title: 'Systems Specialist',
+    company: 'GE Healthcare',
+    startDate: '2011-11',
     endDate: '2014-06',
     description: 'Architected and developed healthcare applications, communication models, and enterprise software solutions.',
     achievements: [
       'Architected and developed PET Graphical Prescription application for PET-MRI scanners',
-      'Developed GEOCOMM (GE Object Communication) - new communication model',
+      'Developed GEOCOMM (GE Object Communication) - new communication model'
+    ]
+  },
+  {
+    id: 'exp-6',
+    title: 'Software Engineer',
+    company: 'Juniper Networks | Infosys',
+    startDate: '2006-10',
+    endDate: '2011-10',
+    description: 'POS Suite of applications',
+    achievements: [
       'Reduced bugs by 30% within 8 months for JWEB (Juniper\'s Web Device management software)',
       'Designed and developed Point Of Sale suite of applications for Nordstrom'
     ]

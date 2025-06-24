@@ -5,6 +5,7 @@ export interface ThemeProps {
     tertiary: string;
     card: string;
     nav: string;
+    alternate: string;
   };
   text: {
     primary: string;
@@ -40,6 +41,7 @@ export const lightTheme: ThemeProps = {
     tertiary: '#f8f9fb',
     card: '#ffffff',
     nav: 'rgba(255, 255, 255, 0.98)',
+    alternate: '#f0f5fa', // Subtle blue-gray that complements the theme
   },
   text: {
     primary: '#1f2937',
@@ -75,6 +77,7 @@ export const darkTheme: ThemeProps = {
     tertiary: '#334155',
     card: '#1e293b',
     nav: 'rgba(15, 23, 42, 0.98)',
+    alternate: '#1a2234', // Subtle darker blue that complements the dark theme
   },
   text: {
     primary: '#f8fafc',

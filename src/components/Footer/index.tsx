@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const FooterWrapper = styled.footer`
   background-color: ${({ theme }) => theme.bg.tertiary};
@@ -70,9 +70,6 @@ const Footer: React.FC = () => {
           </a>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="Visit GitHub Profile">
             <FontAwesomeIcon icon={faGithub} />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter Profile" aria-label="Visit Twitter Profile">
-            <FontAwesomeIcon icon={faTwitter} />
           </a>
         </SocialLinks>
       </Container>
