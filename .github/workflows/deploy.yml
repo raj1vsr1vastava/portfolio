@@ -1,0 +1,53 @@
+name: Deploy React Portfolio Website
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create .nojekyll file
+        run: touch public/.nojekyll
+      
+      - name: Build React app
+        run: npm run build
+        
+      - name: Create .nojekyll in build directory
+        run: touch build/.nojekyll
+        
+      - name: Create placeholder README
+        run: |
+          echo "# This is a placeholder" > build/README.md
+          echo "The actual portfolio website is loaded via index.html" >> build/README.md
+      
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          branch: gh-pages
