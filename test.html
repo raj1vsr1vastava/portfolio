@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { color: #0066cc; }
+        .success { color: green; font-weight: bold; }
+        .debug-info {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 15px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 20px 0;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Portfolio Test Page</h1>
+    <p class="success">If you can see this page, GitHub Pages is working correctly!</p>
+    
+    <p>This is a test page to diagnose issues with the GitHub Pages deployment of the React portfolio.</p>
+    
+    <h2>Debug Information</h2>
+    <div class="debug-info" id="debug-info">Loading...</div>
+    
+    <h2>Next Steps</h2>
+    <p>If this page loads but your React app doesn't, the issue is likely with:</p>
+    <ul>
+        <li>JavaScript loading or execution errors</li>
+        <li>Path issues in the build output</li>
+        <li>CORS or Content Security Policy restrictions</li>
+    </ul>
+    
+    <h2>Test Resources</h2>
+    <button onclick="testMainJS()">Test Main JavaScript File</button>
+    <div id="js-test-result" style="margin-top: 10px;"></div>
+    
+    <script>
+        // Display debug info
+        const debugInfo = {
+            url: window.location.href,
+            baseUrl: window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/'),
+            userAgent: navigator.userAgent,
+            timestamp: new Date().toString()
+        };
+        
+        document.getElementById('debug-info').textContent = JSON.stringify(debugInfo, null, 2);
+        
+        // Function to test if the main JS file loads
+        function testMainJS() {
+            const resultElement = document.getElementById('js-test-result');
+            resultElement.textContent = "Testing...";
+            
+            const script = document.createElement('script');
+            script.src = '/portfolio/static/js/main.57623b33.js';
+            script.onload = () => {
+                resultElement.textContent = "✅ Main JavaScript file loaded successfully!";
+                resultElement.style.color = "green";
+            };
+            script.onerror = (error) => {
+                resultElement.textContent = `❌ Error loading main JavaScript: ${error}`;
+                resultElement.style.color = "red";
+            };
+            
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
