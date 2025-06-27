@@ -1,6 +1,6 @@
 # Rajiv Srivastava - Professional Portfolio Website
 
-A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript. This website is designed to showcase professional experience, skills, and projects in an elegant and user-friendly manner.
+A modern, responsive portfolio website. This website is designed to showcase professional experience, skills, and projects in an elegant and user-friendly manner.
 
 ## Features
 
