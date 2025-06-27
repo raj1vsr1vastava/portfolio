@@ -4,8 +4,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 
 // Components
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
+import HeroAbout from './components/HeroAbout';
 import Experience from './components/Experience';
 import CareerChart from './components/CareerChart';
 import Skills from './components/Skills';
@@ -74,10 +73,8 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <AppContainer>
-        <Header />
-        <main>
-          <Hero />
-          <About />
+        <Header />        <main>
+          <HeroAbout />
           <CareerChart />
           <Experience />
           <Skills />

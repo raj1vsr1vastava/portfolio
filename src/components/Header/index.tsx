@@ -78,7 +78,7 @@ const Header: React.FC = () => {
           <h2>Profile</h2>
         </Logo>
       <NavMenu isOpen={isMenuOpen}>
-          <li><a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a></li>
+          <li><a href="#about-section" onClick={(e) => handleNavClick(e, 'about-section')}>About</a></li>
           <li><a href="#career-chart" onClick={(e) => handleNavClick(e, 'career-chart')}>Career Journey</a></li>
           <li><a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>Experience</a></li>
           <li><a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a></li>

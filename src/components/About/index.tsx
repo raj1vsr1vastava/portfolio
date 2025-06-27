@@ -44,7 +44,7 @@ const About: React.FC = () => {
         >
           <AboutText>
             <motion.p variants={fadeInUp}>
-              With over 19+ years of experience in the software industry, I bring deep technical expertise and leadership in Web, Mobile, and Platform API development. I have made impactful contributions across diverse domains including Payments, Retail, Pharmacy, Travel, and Healthcare.
+              Group Engineering Manager with 19+ years of experience in the software industry, I bring deep technical expertise and leadership in Web, Mobile, and Platform API development. I have made impactful contributions across diverse domains including Payments, Retail, Pharmacy, Travel, and Healthcare.
             </motion.p>
             <motion.p variants={fadeInUp}>
               My technical proficiency spans Mobile (iOS, Android), Core Java, JavaScript, ReactJS, C#, Web Services, Docker, Azure Cloud, and database technologies. I have a strong track record in end-to-end product delivery, engineering management, execution excellence, and strategic planning.
