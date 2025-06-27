@@ -1,155 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '../../contexts/ThemeContext';
-
-const StyledHeader = styled.header<{ scrolled: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: ${({ theme, scrolled }) => 
-    scrolled ? theme.bg.nav : 'transparent'};
-  box-shadow: ${({ theme, scrolled }) => 
-    scrolled ? `0 2px 10px ${theme.shadow.light}` : 'none'};
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-`;
-
-const Logo = styled.div`
-  h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: ${({ theme }) => theme.text.primary};
-  }
-`;
-
-const NavMenu = styled.ul<{ isOpen: boolean }>`
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 24px;
-  
-  @media (max-width: 768px) {
-    position: fixed;
-    flex-direction: column;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: ${({ theme }) => theme.bg.primary};
-    padding: 20px 0;
-    gap: 16px;
-    box-shadow: 0 4px 6px ${({ theme }) => theme.shadow.medium};
-    transform: ${({ isOpen }) => isOpen ? 'translateY(0)' : 'translateY(-100vh)'};
-    opacity: ${({ isOpen }) => isOpen ? 1 : 0};
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 999;
-  }
-  
-  li a {
-    font-size: 16px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.text.primary};
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    
-    &:hover {
-      background-color: ${({ theme }) => theme.bg.tertiary};
-      color: ${({ theme }) => theme.accent.primary};
-    }
-    
-    &.active {
-      background-color: ${({ theme }) => theme.accent.primary};
-      color: white;
-    }
-  }
-`;
-
-const NavActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`;
-
-const NavList = styled.ul`
-  display: contents;
-  padding: 0;
-  margin: 0;
-`;
-
-const ThemeToggle = styled.div`
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.bg.tertiary};
-  color: ${({ theme }) => theme.text.primary};
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: ${({ theme }) => theme.bg.secondary};
-    transform: rotate(15deg);
-  }
-`;
-
-const HamburgerButton = styled.div`
-  display: none;
-  
-  @media (max-width: 768px) {
-    display: block;
-    cursor: pointer;
-    padding: 8px;
-    background: none;
-    border: none;
-  }
-`;
-
-const Hamburger = styled.div`
-  position: relative;
-  width: 24px;
-  height: 20px;
-  
-  span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: ${({ theme }) => theme.text.primary};
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    
-    &:nth-child(1) {
-      top: 0;
-    }
-    
-    &:nth-child(2) {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    &:nth-child(3) {
-      bottom: 0;
-    }
-  }
-`;
+import {
+  StyledHeader,
+  NavContainer,
+  Logo,
+  NavMenu,
+  NavActions,
+  ThemeToggle,
+  HamburgerButton,
+  Hamburger
+} from './styles';
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
+  const headerRef = useRef<HTMLElement>(null);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Handle navigation click with proper scroll positioning
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false); // Close mobile menu if open
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const currentHeaderHeight = headerRef.current?.offsetHeight || 80; // Default to 80px if ref not available
+        // Use smooth scrolling with proper offset based on measured header height
+      // Use the dynamic headerHeight for more accuracy
+      const offset = headerHeight || currentHeaderHeight;
+      window.scrollTo({
+        top: section.offsetTop - offset,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -158,25 +47,43 @@ const Header: React.FC = () => {
       setHasScrolled(false);
     }
   };
-
   useEffect(() => {
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
+    
+    // Measure header height
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+      
+      // Re-measure when window is resized
+      const updateHeaderHeight = () => {
+        if (headerRef.current) {
+          setHeaderHeight(headerRef.current.offsetHeight);
+        }
+      };
+      
+      window.addEventListener('resize', updateHeaderHeight);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', updateHeaderHeight);
+      };
+    }
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   return (
-    <StyledHeader scrolled={hasScrolled}>
+    <StyledHeader ref={headerRef} scrolled={hasScrolled}>
       <NavContainer>
         <Logo>
           <h2>Profile</h2>
         </Logo>
-        <NavMenu isOpen={isMenuOpen}>
-          <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
-          <li><a href="#career-chart" onClick={() => setIsMenuOpen(false)}>Career Journey</a></li>
-          <li><a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a></li>
-          <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
-          <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
-          <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+      <NavMenu isOpen={isMenuOpen}>
+          <li><a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a></li>
+          <li><a href="#career-chart" onClick={(e) => handleNavClick(e, 'career-chart')}>Career Journey</a></li>
+          <li><a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>Experience</a></li>
+          <li><a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a></li>
+          <li><a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a></li>
+          <li><a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a></li>
         </NavMenu>
         <NavActions>
           <ThemeToggle onClick={toggleTheme} role="button" tabIndex={0} aria-label="Toggle dark/light theme">

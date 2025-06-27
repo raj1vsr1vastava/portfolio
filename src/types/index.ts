@@ -12,8 +12,10 @@ export interface ExperienceItem {
 // Type definitions for skills
 export interface Skill {
   name: string;
-  icon: string;
+  icon?: string;
+  customIcon?: string;
   tooltip: string;
+  isHighlighted?: boolean;
 }
 
 export interface SkillCategory {
@@ -26,7 +28,6 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  technologies: string[];
   imageUrl?: string;
   projectUrl?: string;
   githubUrl?: string;

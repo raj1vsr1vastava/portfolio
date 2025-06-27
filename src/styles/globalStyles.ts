@@ -7,6 +7,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
     padding: 0;
     box-sizing: border-box;
   }
+    html {
+    scroll-behavior: smooth; /* Enable smooth scrolling for the entire site */
+    height: 100%;
+    scroll-padding-top: 80px; /* Add padding to account for fixed header height */
+  }
   
   body {
     font-family: 'Inter', sans-serif;
@@ -14,6 +19,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
     color: ${({ theme }) => theme.text.primary};
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    height: 100%;
   }
   
   a {
@@ -59,11 +65,20 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
   html {
     scroll-behavior: smooth;
   }
-
   /* Accessibility */
   :focus {
     outline: 2px solid ${({ theme }) => theme.accent.primary};
     outline-offset: 2px;
+  }
+  
+  /* Remove blue outline from career chart components */
+  #career-chart [role="button"]:focus,
+  #career-chart [data-testid="step-circle"]:focus,
+  #career-chart .CareerStep:focus,
+  #career-chart .StepCircle:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
   }
 
   /* For screen readers */

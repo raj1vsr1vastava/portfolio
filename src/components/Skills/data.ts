@@ -2,163 +2,123 @@ import { SkillCategory } from '../../types';
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "Cloud Platforms",
-    skills: [
+    title: "Technical Expertise",
+    skills: [      {
+        name: "Python",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        tooltip: "Python Programming Language",
+        isHighlighted: true
+      },      
+      {
+        name: "Copilot",
+        customIcon: "https://static.vecteezy.com/system/resources/previews/046/861/635/original/copilot-icon-transparent-background-free-png.png",
+        tooltip: "Copilot AI Assistant",
+        isHighlighted: true
+      },
+      {
+        name: "Model Context Protocol (MCP)",
+        customIcon: "https://storage.googleapis.com/zenn-user-upload/topics/59acb4066e.png",
+        tooltip: "MCP Client and Server",
+        isHighlighted: true
+      },
+      {
+        name: "Autonomous Multi-Agent Frameworks",
+        customIcon: "https://cdn.iconscout.com/icon/premium/png-256-thumb/multi-agent-2134465-1802462.png",
+        tooltip: "AutoGen, Semantic Kernel, LangChain",
+        isHighlighted: true
+      },
       {
         name: "Azure",
-        icon: "microsoft",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
         tooltip: "Microsoft Azure Cloud Platform"
       },
       {
-        name: "Azure DevOps",
-        icon: "code-branch",
-        tooltip: "Azure DevOps CI/CD and Project Management"
-      },
-      {
-        name: "Azure Functions",
-        icon: "bolt",
-        tooltip: "Serverless Computing with Azure Functions"
-      },
-      {
-        name: "Power Platform",
-        icon: "cube",
-        tooltip: "Microsoft Power Platform Suite"
-      }
-    ]
-  },
-  {
-    title: "Development",
-    skills: [
-      {
-        name: "C#",
-        icon: "code",
-        tooltip: "C# Programming Language"
-      },
-      {
-        name: ".NET",
-        icon: "windows",
-        tooltip: ".NET Framework & Core"
-      },
-      {
-        name: "JavaScript",
-        icon: "js",
-        tooltip: "JavaScript Programming"
-      },
-      {
-        name: "TypeScript",
-        icon: "js",
-        tooltip: "TypeScript Programming"
-      },
-      {
-        name: "React",
-        icon: "react",
-        tooltip: "React.js Frontend Framework"
-      }
-    ]
-  },
-  {
-    title: "Tools & Technologies",
-    skills: [
-      {
         name: "Git",
-        icon: "git-alt",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
         tooltip: "Git Version Control"
       },
       {
         name: "Docker",
-        icon: "docker",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
         tooltip: "Docker Containerization"
       },
       {
         name: "Kubernetes",
-        icon: "dharmachakra",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
         tooltip: "Kubernetes Container Orchestration"
       },
       {
         name: "SQL Server",
-        icon: "database",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
         tooltip: "Microsoft SQL Server Database"
       },
       {
-        name: "Power BI",
-        icon: "chart-bar",
-        tooltip: "Microsoft Power BI Analytics"
-      }
-    ]
-  },
-  {
-    title: "Mobile & Cross-Platform",
-    skills: [
+        name: "JavaScript",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        tooltip: "JavaScript Programming"
+      },
+      {
+        name: "React",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        tooltip: "React.js Frontend Framework"
+      },
       {
         name: "Android",
-        icon: "android",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-plain.svg",
         tooltip: "Android App Development"
       },
       {
         name: "iOS",
-        icon: "apple",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
         tooltip: "iOS App Development"
       },
       {
         name: "React Native",
-        icon: "mobile-alt",
+        customIcon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
         tooltip: "Cross-Platform Mobile Development"
-      },
-      {
-        name: "PWA",
-        icon: "globe",
-        tooltip: "Progressive Web Apps"
       }
     ]
-  },
-  {
-    title: "Leadership & Management",
+  },  {    title: "Domain Expertise",
     skills: [
       {
         name: "Agile/Scrum",
-        icon: "tasks",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/6295/6295417.png",
         tooltip: "Agile Project Management"
       },
       {
         name: "Team Leadership",
-        icon: "users",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/5850/5850276.png",
         tooltip: "Team Leadership"
       },
       {
         name: "Strategic Planning",
-        icon: "chess",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/9746/9746812.png",
         tooltip: "Strategic Planning"
       },
       {
-        name: "PDLC",
-        icon: "project-diagram",
-        tooltip: "Product Development Lifecycle"
+        name: "GenAI",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/8637/8637707.png",
+        tooltip: "Advanced analysis using Python"
+      },
+      {
+        name: "Retail POS",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/3176/3176371.png",
+        tooltip: "Retail POS Suite of applications"
+      },
+      {
+        name: "Healthcare",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
+        tooltip: "Healthcare Pharmacy applications"
+      },
+      {
+        name: "Supply Chain",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/2897/2897785.png",
+        tooltip: "Supply Chain Management"
+      },
+      {
+        name: "Payments",
+        customIcon: "https://cdn-icons-png.flaticon.com/512/4021/4021708.png",
+        tooltip: "Payment Processing Systems"
       }
-    ]
-  },
-  {
-    title: "Data & AI",
-    skills: [
-      {
-        name: "Big Data",
-        icon: "database",
-        tooltip: "Big Data Processing"
-      },
-      {
-        name: "Machine Learning",
-        icon: "brain",
-        tooltip: "Machine Learning Integration"
-      },
-      {
-        name: "Analytics",
-        icon: "chart-line",
-        tooltip: "Data Analytics"
-      },
-      {
-        name: "Cognitive Services",
-        icon: "robot",
-        tooltip: "Azure Cognitive Services"
-      }
-    ]
-  }
+    ]  }
 ];
