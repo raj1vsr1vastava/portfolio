@@ -45,9 +45,7 @@ const Contact: React.FC = () => {
         >
           <h3>Let's Connect</h3>
           <p>
-            I'm always open to meaningful conversations and new ideas. 
-            Whether you'd like to explore potential collaborations, share insights, or 
-            simply expand our professional networks, feel free to reach out through email or LinkedIn.
+            Always open to new ideas and meaningful connections — feel free to reach out via email or LinkedIn
           </p>
         </ContactIntro>
         
@@ -62,7 +60,7 @@ const Contact: React.FC = () => {
             </ContactIcon>
             <ContactCardTitle>Email Me</ContactCardTitle>
             <ContactCardText>
-              Send me an email with your inquiry or project details and I'll get back to you promptly.
+              Drop me an email with your query — I’ll respond promptly
             </ContactCardText>
             <ButtonsContainer>
               <PrimaryButton 
@@ -85,7 +83,7 @@ const Contact: React.FC = () => {
             </ContactIcon>
             <ContactCardTitle>Connect on LinkedIn</ContactCardTitle>
             <ContactCardText>
-              Connect with me on LinkedIn to stay updated with my latest professional activities.
+              Connect on LinkedIn to stay updated on my latest work and professional milestones
             </ContactCardText>
             <ButtonsContainer>
               <PrimaryButton 
