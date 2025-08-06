@@ -19,6 +19,9 @@ const AppContainer = styled.div`
 `;
 
 const App: React.FC = () => {
+  // Add console log for debugging
+  console.log('App component is rendering');
+
   // Handle smooth scrolling for navigation
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
