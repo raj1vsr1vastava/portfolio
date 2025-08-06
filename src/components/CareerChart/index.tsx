@@ -16,8 +16,7 @@ import {
   StepRole,
   CompanyLogo,
   CareerStep,
-  CareerPathLine,
-  MobileStepper
+  CareerPathLine
 } from './styles';
 
 // Animation variants
@@ -47,6 +46,24 @@ const CareerChart: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [activeStep, setActiveStep] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Get the data in the correct order based on screen size
+  const getOrderedData = () => {
+    return isMobile ? [...organizationData].reverse() : organizationData;
+  };
   
   // Debug: Log all experience items on mount
   useEffect(() => {
@@ -145,8 +162,8 @@ const CareerChart: React.FC = () => {
             <CareerPathLine />
             
             <CareerStepsContainer>
-              {/* Sort organizations by start date, earliest first */}
-              {organizationData.map((org, index) => {
+              {/* Sort organizations by start date - chronological for desktop, reverse for mobile */}
+              {getOrderedData().map((org, index) => {
                 const color = getCompanyColor(org.colorClass);
                 
                 return (                  <CareerStep
@@ -221,11 +238,6 @@ const CareerChart: React.FC = () => {
                 );
               })}
             </CareerStepsContainer>
-            
-            {/* Mobile Layout is handled by media queries in the styled components */}
-            <MobileStepper>
-              {/* Mobile specific elements if needed */}
-            </MobileStepper>
           </HorizontalCareerPath>
         </ChartContainer>
       </Container>

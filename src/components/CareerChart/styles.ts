@@ -96,6 +96,37 @@ export const CareerStepsContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     margin: 20px 0;
+    
+    /* Vertical connecting line for mobile */
+    &::before {
+      content: "";
+      position: absolute;
+      left: 20px; /* Center it with the step circles */
+      top: 60px; /* Start after the first circle */
+      bottom: 60px; /* End before the last circle */
+      width: 3px;
+      background: linear-gradient(to top, 
+        ${({ theme }) => theme.text.secondary || '#e0e0e0'}, 
+        rgba(0, 0, 0, 0.1)
+      );
+      opacity: 0.6;
+      z-index: 1;
+    }
+    
+    /* Upward arrow at the top */
+    &::after {
+      content: "";
+      position: absolute;
+      left: 13px; /* Center with the line */
+      top: 40px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 12px solid ${({ theme }) => theme.text.secondary || '#e0e0e0'};
+      opacity: 0.8;
+      z-index: 2;
+    }
   }
 `;
 
@@ -341,15 +372,5 @@ export const CareerPathLine = styled.div`
 
   @media (max-width: 768px) {
     display: none;
-  }
-`;
-
-export const MobileStepper = styled.div`
-  display: none;
-  
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
   }
 `;
