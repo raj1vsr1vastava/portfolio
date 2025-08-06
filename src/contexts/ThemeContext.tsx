@@ -20,18 +20,32 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  // Initialize theme from localStorage or default to 'light'
-  const [theme, setTheme] = useState<ThemeMode>(() => {
-    const savedTheme = window.localStorage.getItem('theme') as ThemeMode;
-    return savedTheme || 
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  });
+  // Initialize theme safely
+  const [theme, setTheme] = useState<ThemeMode>('light');
+
+  // Initialize theme from localStorage after component mounts
+  useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem('theme') as ThemeMode;
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+      }
+    } catch (error) {
+      console.warn('Failed to access localStorage:', error);
+    }
+  }, []);
 
   // Toggle theme function
   const toggleTheme = () => {
     setTheme((prevTheme) => {
       const newTheme = prevTheme === 'light' ? 'dark' : 'light';
-      window.localStorage.setItem('theme', newTheme);
+      try {
+        localStorage.setItem('theme', newTheme);
+      } catch (error) {
+        console.warn('Failed to save theme to localStorage:', error);
+      }
       return newTheme;
     });
   };
