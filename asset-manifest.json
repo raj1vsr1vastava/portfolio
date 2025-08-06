@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.56d3b3d0.js",
+    "main.js": "/portfolio/static/js/main.cbca78e2.js",
     "static/media/Rajiv-Srivastava-Microsoft.pdf": "/portfolio/static/media/Rajiv-Srivastava-Microsoft.02580691db6fc9a18cd7.pdf",
     "index.html": "/portfolio/index.html",
-    "main.56d3b3d0.js.map": "/portfolio/static/js/main.56d3b3d0.js.map"
+    "main.cbca78e2.js.map": "/portfolio/static/js/main.cbca78e2.js.map"
   },
   "entrypoints": [
-    "static/js/main.56d3b3d0.js"
+    "static/js/main.cbca78e2.js"
   ]
 }
