@@ -16,6 +16,8 @@ import {
 
 // Import the same profile image used in HeroAbout
 const profileImage = require('../../assets/images/Rajiv.jpg');
+// Import the resume PDF
+const resumePDF = require('../../assets/Rajiv-Srivastava-Microsoft.pdf');
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -93,6 +95,7 @@ const Header: React.FC = () => {
           <li><a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a></li>
           <li><a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a></li>
           <li><a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a></li>
+          <li><a href={resumePDF} download="Rajiv-Srivastava-Resume.pdf" target="_blank" rel="noopener noreferrer">📄 Resume</a></li>
         </NavMenu>
         <NavActions>
           <ThemeToggle onClick={toggleTheme} role="button" tabIndex={0} aria-label="Toggle dark/light theme">

@@ -92,6 +92,25 @@ export const NavMenu = styled.ul<{ isOpen: boolean }>`
       background-color: ${({ theme }) => theme.accent.primary};
       color: white;
     }
+    
+    /* Special styling for Resume download link */
+    &[download] {
+      background: linear-gradient(90deg, 
+        ${({ theme }) => theme.accent.primary}, 
+        ${({ theme }) => theme.accent.secondary}
+      );
+      color: white !important;
+      font-weight: 600;
+      
+      &:hover {
+        background: linear-gradient(90deg, 
+          ${({ theme }) => theme.accent.secondary}, 
+          ${({ theme }) => theme.accent.primary}
+        );
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+      }
+    }
   }
 `;
 
