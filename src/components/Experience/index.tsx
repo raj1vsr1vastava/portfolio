@@ -58,7 +58,7 @@ const Experience: React.FC = () => {
       <Container>
         <SectionTitle>Professional Experience</SectionTitle>
         <SectionSubtitle>
-          A journey through leading technology companies and impactful projects
+          A path through top tech firms and high-impact work
         </SectionSubtitle>
         
         <ExperienceGrid ref={ref}>

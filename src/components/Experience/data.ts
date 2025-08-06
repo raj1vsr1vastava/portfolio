@@ -7,7 +7,7 @@ export const experienceData: ExperienceItem[] = [
     company: 'Microsoft India',
     startDate: '2022-03',
     endDate: null,
-    description: 'Driving charters for (A) Python In Excel and (B) Outlook Extensibility (Add-ins)',
+    description: 'Leading strategic charters for (A) Python in Excel and (B) Outlook Extensibility (Add-ins)',
     achievements: [
       'Redefining Excel with GenAI capabilities which will transform how users interact with data with Advanced Analysis and Python',
       'Leading Outlook Extensibility (New Outlook, macOS and Mobile platforms) adoption and Add-ins modernization',
@@ -20,7 +20,7 @@ export const experienceData: ExperienceItem[] = [
     company: 'PayPal India',
     startDate: '2020-11',
     endDate: '2022-02',
-    description: 'Successfully led major platform migrations and new product developments for digital payment solutions.',
+    description: 'Successfully spearheaded platform migrations and pioneered new product development in digital payments',
     achievements: [
       'Led migration of Digital Wallet Activity module',
       'Successfully delivered Widget (Server Driven UI) for Activity - pluggable across PayPal modules',
@@ -33,7 +33,7 @@ export const experienceData: ExperienceItem[] = [
     company: 'Walmart Labs',
     startDate: '2018-08',
     endDate: '2020-10',
-    description: 'Drove successful healthcare initiatives and cloud migration projects for pharmacy and supplier management systems.',
+    description: 'Led successful healthcare initiatives and cloud migration efforts for pharmacy and supplier management systems',
     achievements: [
       'Led Pharmacy COVID initiatives: Curbside pickup, Ship from Store, In-Home, and Immunization features',
       'Executed Pharmacy backend architecture migration to Azure',

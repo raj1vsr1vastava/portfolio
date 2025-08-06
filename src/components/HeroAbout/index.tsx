@@ -79,7 +79,7 @@ const HeroAbout: React.FC = () => {
               </motion.p>
               
               <motion.p>
-                Technical proficiency in Mobile (iOS, Android), Core Java, JavaScript, ReactJS, C#, Web Services, Docker, Azure Cloud, and database technologies with a strong track record in end-to-end product delivery and engineering management.
+                My technical proficiency spans GenAI, Multi Agent app development, Web development (JavaScript, ReactJS), Mobile (iOS, Android), Core Java, C#, Web Services, Docker, Azure Cloud, and database technologies with a strong track record in end-to-end product delivery and engineering management.
               </motion.p>
             </BioContainer>
             

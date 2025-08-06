@@ -155,7 +155,7 @@ const CareerChart: React.FC = () => {
           initial="hidden"
           animate={controls}
         >
-          <p>This chart illustrates my career progression across different organizations. Click on any step to view detailed experience information.</p>
+          <p>Career journey across organizations — click any step to explore details</p>
         </ChartDescription>
           <ChartContainer ref={ref}>          <HorizontalCareerPath>
             {/* Horizontal connecting line with arrow */}
