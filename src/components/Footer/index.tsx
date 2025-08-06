@@ -16,10 +16,10 @@ const Footer: React.FC = () => {
       <Container>
         <Copyright>&copy; {currentYear} Rajiv Srivastava. All rights reserved.</Copyright>
         
-        <SocialLinks>          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" aria-label="Visit LinkedIn Profile">
+        <SocialLinks>          <a href="https://www.linkedin.com/in/rajiv-srivastava/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" aria-label="Visit LinkedIn Profile">
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="Visit GitHub Profile">
+          <a href="https://github.com/raj1vsr1vastava" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="Visit GitHub Profile">
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </SocialLinks>

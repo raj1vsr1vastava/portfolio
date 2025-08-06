@@ -48,7 +48,7 @@ export const organizationData: Organization[] = [
     endDate: '2020-10',    
     colorClass: 'walmart-bar',
     width: '14.29%', // Exact segment size (Aug 2018 to Nov 2020)
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg',
+    logoUrl: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/walmart.svg',
   },
   {
     id: 'org-6',

@@ -35,7 +35,7 @@ const experienceToOrgMapping: { [key: string]: string } = {
 const orgLogoMapping: { [key: string]: string } = {
   'org-1': 'https://brandeps.com/logo-download/G/GE-Healthcare-logo-vector-01.svg', // GE Healthcare
   'org-2': 'https://1000logos.net/wp-content/uploads/2022/05/Amadeus-Logo.png',
-  'org-3': 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg',
+  'org-3': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/walmart.svg',
   'org-4': 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg',
   'org-5': 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
   'org-6': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Juniper_Networks_logo.svg/2560px-Juniper_Networks_logo.svg.png', // Juniper Networks
