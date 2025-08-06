@@ -6,12 +6,16 @@ import {
   StyledHeader,
   NavContainer,
   Logo,
+  HeaderProfileImage,
   NavMenu,
   NavActions,
   ThemeToggle,
   HamburgerButton,
   Hamburger
 } from './styles';
+
+// Import the same profile image used in HeroAbout
+const profileImage = require('../../assets/images/Rajiv.jpg');
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -76,6 +80,11 @@ const Header: React.FC = () => {
       <NavContainer>
         <Logo>
           <h2>Profile</h2>
+          <HeaderProfileImage 
+            src={profileImage}
+            alt="Rajiv Srivastava"
+            visible={hasScrolled}
+          />
         </Logo>
       <NavMenu isOpen={isMenuOpen}>
           <li><a href="#about-section" onClick={(e) => handleNavClick(e, 'about-section')}>About</a></li>

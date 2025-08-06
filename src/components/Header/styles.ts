@@ -24,10 +24,32 @@ export const NavContainer = styled.div`
 `;
 
 export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  
   h2 {
     font-size: 24px;
     font-weight: 700;
     color: ${({ theme }) => theme.text.primary};
+  }
+`;
+
+export const HeaderProfileImage = styled.img<{ visible: boolean }>`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid ${({ theme }) => theme.accent.primary};
+  opacity: ${({ visible }) => visible ? 1 : 0};
+  transform: ${({ visible }) => visible ? 'scale(1)' : 'scale(0.8)'};
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-left: 12px;
+  flex-shrink: 0;
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: ${({ visible }) => visible ? 'block' : 'none'};
   }
 `;
 

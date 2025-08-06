@@ -13,13 +13,24 @@ export const BioContainer = styled(motion.div)`
   }
   
   @media (max-width: 768px) {
-    p {
-      margin-bottom: 12px;
-      
-      &:last-child {
-        margin-bottom: 6px;
-      }
+    display: none;
+  }
+`;
+
+export const BioContainerMobile = styled(motion.div)`
+  margin: 8px 0;
+  display: none;
+  
+  p {
+    margin-bottom: 12px;
+    
+    &:last-child {
+      margin-bottom: 6px;
     }
+  }
+  
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -145,8 +156,20 @@ export const HeroDescription = styled(motion.p)`
   max-width: 100%;
   
   @media (max-width: 768px) {
-    font-size: 15px;
-    margin-bottom: 16px;
+    display: none;
+  }
+`;
+
+export const HeroDescriptionMobile = styled(motion.p)`
+  font-size: 15px;
+  line-height: 1.5;
+  color: ${({ theme }) => theme.text.secondary};
+  margin-bottom: 16px;
+  max-width: 100%;
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -238,6 +261,18 @@ export const HeroImageWrapper = styled.div`
   overflow: hidden;
   aspect-ratio: 1 / 1;
   
+  @media (max-width: 768px) {
+    max-width: 200px;
+    width: 70%;
+    height: 70%;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 160px;
+    width: 60%;
+    height: 60%;
+  }
+  
   &::before {
     content: '';
     position: absolute;
@@ -251,6 +286,13 @@ export const HeroImageWrapper = styled.div`
       ${({ theme }) => theme.accent.secondary}30
     );
     z-index: -1;
+    
+    @media (max-width: 768px) {
+      top: -8px;
+      left: -8px;
+      right: 8px;
+      bottom: 8px;
+    }
   }
 `;
 
@@ -279,6 +321,14 @@ export const ProfileImagePlaceholder = styled.div`
   font-size: 64px;
   color: ${({ theme }) => theme.text.secondary};
   box-shadow: 0 20px 40px ${({ theme }) => theme.shadow.medium};
+  
+  @media (max-width: 768px) {
+    font-size: 48px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 36px;
+  }
   
   i {
     position: absolute;

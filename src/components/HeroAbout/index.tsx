@@ -8,6 +8,7 @@ import {
   HeroTitle,
   HeroSubtitle,
   HeroDescription,
+  HeroDescriptionMobile,
   HeroButtons,
   PrimaryButton,
   SecondaryButton,
@@ -19,6 +20,7 @@ import {
   StatItem,
   HiddenAnchor,
   BioContainer,
+  BioContainerMobile,
   fadeInUp,
   fadeIn,
   staggerContainer
@@ -54,6 +56,10 @@ const HeroAbout: React.FC = () => {
               Passionate about leading high-performing teams and delivering innovative products 
               that drive business growth through transformative digital solutions.
             </HeroDescription>
+            
+            <HeroDescriptionMobile variants={fadeInUp}>
+              Leading high-impact teams to build innovative products that fuel digital transformation
+            </HeroDescriptionMobile>
               <Stats>
               <StatItem variants={fadeInUp}>
                 <h3>19+</h3>
@@ -82,6 +88,12 @@ const HeroAbout: React.FC = () => {
                 My technical proficiency spans GenAI, Multi Agent app development, Web development (JavaScript, ReactJS), Mobile (iOS, Android), Core Java, C#, Web Services, Docker, Azure Cloud, and database technologies with a strong track record in end-to-end product delivery and engineering management.
               </motion.p>
             </BioContainer>
+            
+            <BioContainerMobile variants={fadeInUp}>
+              <motion.p>
+                Engineering leader with 19+ years of experience delivering innovative products across Payments, Retail, Pharmacy, Travel, and Healthcare. Skilled in GenAI, multi-agent apps, Web (JavaScript, ReactJS), Mobile (iOS, Android), Core Java, C#, Docker, Azure, and databases. Proven track record in leading teams and driving end-to-end product delivery.
+              </motion.p>
+            </BioContainerMobile>
             
             <HeroButtons variants={fadeInUp}>
               <PrimaryButton href="#contact">
