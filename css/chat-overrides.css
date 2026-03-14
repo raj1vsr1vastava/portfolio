@@ -1,0 +1,36 @@
+/* ============================================================
+   Chat Widget — Theme-aware Overrides
+   All values use CSS variables so dark/light auto-adapts.
+   ============================================================ */
+.chat-widget-bubble { background:var(--bg-elevated)!important; border:1px solid var(--border)!important; box-shadow:var(--shadow-card)!important }
+.chat-widget-bubble:hover { border-color:var(--accent)!important; box-shadow:0 6px 28px rgba(0,0,0,.3)!important }
+.chat-widget-bubble-icon { color:var(--accent)!important }
+
+.chat-widget-window { background:var(--bg-surface)!important; border:1px solid var(--border)!important; box-shadow:0 12px 48px rgba(0,0,0,.25)!important }
+.chat-widget-header { background:var(--bg-elevated)!important; border-bottom:1px solid var(--border)!important }
+.chat-widget-header-title { color:var(--text)!important }
+.chat-widget-header-subtitle { color:var(--text-muted)!important }
+.chat-widget-header-close { background:var(--accent-dim)!important; color:var(--text-muted)!important }
+.chat-widget-header-close:hover { background:var(--border-hover)!important; color:var(--text)!important }
+
+.chat-widget-messages { background:var(--bg-surface)!important }
+.chat-widget-messages::-webkit-scrollbar-thumb { background:var(--border-hover)!important }
+
+.chat-widget-msg--bot { background:var(--bg-elevated)!important; color:var(--text)!important }
+.chat-widget-msg--user { background:var(--accent)!important; color:var(--bg)!important }
+.chat-widget-msg a { color:var(--accent)!important }
+.chat-widget-msg--user a { color:var(--bg)!important }
+
+.chat-widget-typing { background:var(--bg-elevated)!important }
+.chat-widget-typing-dot { background:var(--text-muted)!important }
+
+.chat-widget-quick-btn { background:var(--bg-elevated)!important; border-color:var(--border-hover)!important; color:var(--text-mid)!important }
+.chat-widget-quick-btn:hover { border-color:var(--accent)!important; color:var(--accent)!important; background:var(--accent-dim)!important }
+
+.chat-widget-input-area { border-top:1px solid var(--border)!important; background:var(--bg-alt)!important }
+.chat-widget-input { background:var(--bg-elevated)!important; border:1px solid var(--border)!important; color:var(--text)!important }
+.chat-widget-input::placeholder { color:var(--text-muted)!important }
+.chat-widget-input:focus { border-color:var(--accent)!important; box-shadow:0 0 0 2px var(--accent-dim)!important }
+.chat-widget-send-btn { background:var(--accent)!important; color:var(--bg)!important }
+.chat-widget-send-btn:hover { background:var(--accent-hover)!important }
+.chat-widget-send-btn:disabled { background:var(--bg-elevated)!important; color:var(--text-muted)!important }

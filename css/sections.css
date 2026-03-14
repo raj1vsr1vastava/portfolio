@@ -1,0 +1,144 @@
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  min-height:100dvh; display:flex; align-items:center;
+  padding:calc(var(--nav-h) + 40px) 0 60px;
+}
+.hero__inner {
+  max-width:var(--container); margin:0 auto; padding:0 36px; width:100%;
+  text-align:center;
+}
+.hero__headline {
+  font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.2rem);
+  font-weight:400; line-height:1.2; letter-spacing:-.02em;
+  color:var(--text); margin-bottom:24px; transition:color .3s;
+}
+.hero__sub {
+  font-size:clamp(1.1rem,1.8vw,1.35rem); color:var(--text-mid); line-height:1.75;
+  margin-bottom:36px; max-width:640px; margin-left:auto; margin-right:auto;
+  transition:color .3s;
+}
+.hero__actions { display:flex; gap:16px; flex-wrap:wrap; justify-content:center }
+
+/* ============================================================
+   Beliefs — Executive Manifesto
+   ============================================================ */
+.beliefs { padding:100px 0; background:var(--bg-alt); transition:background .4s }
+.beliefs__grid { display:grid; grid-template-columns:1fr; gap:40px }
+@media(min-width:768px) { .beliefs__grid { grid-template-columns:repeat(3,1fr); gap:48px } }
+
+.belief { padding:0 }
+.belief__title {
+  font-family:var(--font-display); font-size:1.7rem; font-weight:500;
+  line-height:1.3; color:var(--text); margin-bottom:16px; transition:color .3s;
+}
+.belief__body { font-size:1.2rem; color:var(--text-mid); line-height:1.75; transition:color .3s }
+
+/* ============================================================
+   Impact — Big Numbers
+   ============================================================ */
+.impact { padding:80px 0 }
+.stats__grid { display:grid; grid-template-columns:repeat(2,1fr); gap:36px }
+@media(min-width:768px) { .stats__grid { grid-template-columns:repeat(4,1fr); gap:48px } }
+
+.stat { text-align:center; padding:28px 0 }
+.stat__value {
+  display:block; font-family:var(--font-display);
+  font-size:clamp(2.8rem,6vw,4.2rem); font-weight:400;
+  line-height:1; color:var(--accent); margin-bottom:12px; transition:color .3s;
+}
+.stat__label { font-size:1rem; color:var(--text-mid); line-height:1.5; transition:color .3s }
+
+/* ============================================================
+   Work — Themes, Not Jobs
+   ============================================================ */
+.work { padding:100px 0; background:var(--bg-alt); transition:background .4s }
+.themes__list { display:flex; flex-direction:column; gap:16px }
+
+.theme {
+  display:grid; grid-template-columns:5px 1fr;
+  background:var(--bg-surface); border-radius:14px; overflow:hidden;
+  transition:background .3s, transform .3s;
+}
+.theme:hover { background:var(--bg-elevated); transform:translateX(4px) }
+.theme__bar { border-radius:14px 0 0 14px }
+.theme__content { padding:32px 36px }
+
+.theme__scope {
+  display:block; font-size:.85rem; font-weight:500; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; transition:color .3s;
+}
+.theme__title {
+  font-family:var(--font-display); font-size:clamp(1.3rem,2vw,1.6rem);
+  font-weight:400; line-height:1.25; color:var(--text); margin-bottom:12px; transition:color .3s;
+}
+.theme__body { font-size:1.02rem; color:var(--text-mid); line-height:1.75; transition:color .3s }
+
+@media(max-width:768px) { .theme__content { padding:28px 22px } }
+
+/* ============================================================
+   Innovation — Patents
+   ============================================================ */
+.innovation { padding:100px 0 }
+.patents__grid { display:grid; grid-template-columns:1fr; gap:16px }
+@media(min-width:768px) { .patents__grid { grid-template-columns:1fr 1fr } }
+
+.patent {
+  padding:40px; background:var(--bg-surface); border:1px solid var(--border);
+  border-radius:14px; transition:border-color .4s, box-shadow .4s, background .4s;
+}
+.patent:hover { border-color:var(--accent); box-shadow:var(--shadow-glow) }
+
+.patent__id {
+  display:block; font-size:.85rem; font-weight:600; color:var(--accent);
+  letter-spacing:.08em; margin-bottom:16px; transition:color .3s;
+}
+.patent__title {
+  font-family:var(--font-display); font-size:1.3rem; font-weight:400;
+  line-height:1.35; color:var(--text); margin-bottom:14px; transition:color .3s;
+}
+.patent__status {
+  font-size:.8rem; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-muted); transition:color .3s;
+}
+
+/* ============================================================
+   Connect — CTA
+   ============================================================ */
+.connect { padding:120px 0 80px; background:var(--bg-alt); transition:background .4s }
+.connect__inner { text-align:center; max-width:640px; margin:0 auto }
+.connect__heading {
+  font-family:var(--font-display); font-size:clamp(2.4rem,5vw,3.8rem);
+  font-weight:400; line-height:1.15; color:var(--text); margin-bottom:16px; transition:color .3s;
+}
+.connect__text { font-size:1.1rem; color:var(--text-mid); line-height:1.7; margin-bottom:48px; transition:color .3s }
+
+.connect__links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap }
+.connect__card {
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  padding:28px 36px; background:var(--bg-surface); border:1px solid var(--border);
+  border-radius:12px; transition:border-color .3s, transform .3s, background .4s;
+  min-width:140px;
+}
+.connect__card:hover { border-color:var(--accent); transform:translateY(-3px) }
+.connect__icon {
+  font-size:1.4rem; color:var(--accent); display:flex; align-items:center;
+  justify-content:center; width:48px; height:48px; border-radius:50%;
+  background:var(--accent-dim); transition:color .3s, background .3s;
+}
+.connect__icon svg { width:20px; height:20px }
+.connect__label { font-size:.88rem; font-weight:500; color:var(--text-mid); transition:color .3s }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer { border-top:1px solid var(--border); padding:36px 0; transition:border-color .3s }
+.footer__inner {
+  display:flex; justify-content:center; align-items:center;
+  font-size:.9rem; color:var(--text-muted); text-align:center;
+  transition:color .3s;
+}
+.footer__links { display:flex; gap:28px }
+.footer__links a { color:var(--text-muted); transition:color .3s }
+.footer__links a:hover { color:var(--accent) }

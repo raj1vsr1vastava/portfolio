@@ -1,0 +1,15 @@
+/* ============================================================
+   Responsive — Small screens
+   ============================================================ */
+@media(max-width:480px) {
+  .container { padding:0 20px }
+  .nav__inner { padding:0 20px }
+  .hero__inner { padding:0 20px }
+  .beliefs, .work, .connect { padding:64px 0 }
+  .impact { padding:48px 0 }
+  .innovation { padding:64px 0 }
+  .section-header { margin-bottom:36px }
+  .btn { width:100%; max-width:280px }
+  .footer__inner { justify-content:center; text-align:center }
+  .footer__links { justify-content:center; width:100% }
+}
