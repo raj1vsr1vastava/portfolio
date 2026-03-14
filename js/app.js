@@ -67,12 +67,14 @@
           <span class="nav__divider">|</span>
           <span class="nav__role">${esc(D.role)}</span>
         </a>
-        <button class="nav__toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
-        <ul class="nav__menu" id="nav-menu">
-          ${nav}
-          <li><button class="nav__link nav__chat-btn" id="nav-chat-btn">Chat</button></li>
-          <li><button class="nav__theme-toggle" id="theme-toggle" aria-label="Toggle theme">${sunSvg}${moonSvg}</button></li>
-        </ul>
+        <div class="nav__actions">
+          <ul class="nav__menu" id="nav-menu">
+            ${nav}
+            <li><button class="nav__link nav__chat-btn" id="nav-chat-btn">Chat</button></li>
+          </ul>
+          <button class="nav__theme-toggle" id="theme-toggle" aria-label="Toggle theme">${sunSvg}${moonSvg}</button>
+          <button class="nav__toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
+        </div>
       </div>
     </nav>
 

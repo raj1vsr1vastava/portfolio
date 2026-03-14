@@ -54,7 +54,7 @@
 .photo-overlay__img {
   position:relative; z-index:1;
   width:min(360px, 80vw); height:min(360px, 80vw);
-  border-radius:50%; object-fit:cover;
+  border-radius:50%; object-fit:cover; object-position:top;
   border:3px solid var(--border-hover);
   box-shadow:0 20px 80px rgba(0,0,0,.5);
   transform:scale(.85); transition:transform .35s var(--ease-out);

@@ -17,19 +17,21 @@
 }
 .nav__logo {
   font-family:var(--font-body); transition:color .3s;
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; gap:10px; min-width:0;
 }
-.nav__name { font-size:.95rem; font-weight:600; color:var(--text); letter-spacing:.02em }
+.nav__name { font-size:.95rem; font-weight:600; color:var(--text); letter-spacing:.02em; white-space:nowrap }
 .nav__divider { color:var(--border-hover); font-weight:300; font-size:.9rem }
-.nav__role { font-size:.9rem; font-weight:400; color:var(--text) }
+.nav__role { font-size:.9rem; font-weight:400; color:var(--text); white-space:nowrap }
 
 .nav__avatar {
-  width:34px; height:34px; border-radius:50%; object-fit:cover;
-  border:2px solid var(--border); cursor:pointer;
+  width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:top;
+  border:2px solid var(--border); cursor:pointer; flex-shrink:0;
   transition:border-color .3s, transform .2s;
 }
 .nav__avatar:hover { border-color:var(--accent); transform:scale(1.08) }
 
+/* ---------- Right side: menu + toggle + hamburger ---------- */
+.nav__actions { display:flex; align-items:center; gap:24px }
 .nav__menu { display:flex; align-items:center; gap:40px }
 
 .nav__link {
@@ -56,7 +58,7 @@
   display:flex; align-items:center; justify-content:center;
   width:36px; height:36px; border-radius:50%;
   border:1px solid var(--border);
-  color:var(--text-muted);
+  color:var(--text-muted); flex-shrink:0;
   transition: border-color .3s, color .3s, background .3s;
 }
 .nav__theme-toggle:hover {
@@ -87,6 +89,7 @@
 /* ---------- Mobile nav ---------- */
 @media(max-width:768px) {
   .nav__toggle { display:flex }
+  .nav__actions { gap:16px }
   .nav__menu {
     position:fixed; top:0; right:0; width:min(320px,85vw); height:100dvh;
     background:var(--bg-surface); flex-direction:column;
@@ -106,8 +109,5 @@
     margin-top:16px; text-align:center; font-size:1rem!important;
     padding:14px 0!important; border-radius:8px;
     border:1px solid var(--border)!important;
-  }
-  .nav__theme-toggle {
-    margin-top:24px; width:44px; height:44px; align-self:center;
   }
 }
